@@ -11,11 +11,13 @@ import {SafeAreaView, StatusBar, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Config from 'react-native-config';
 import BootSplash from 'react-native-bootsplash';
+import {Home} from './src/components/screens';
 
 function App(): React.JSX.Element {
   useEffect(() => {
     BootSplash.hide({fade: true});
   }, []);
+
   const backgroundStyle = {
     backgroundColor: Colors.lighter,
   };
@@ -26,9 +28,7 @@ function App(): React.JSX.Element {
         barStyle={'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <View>
-        <Text>test</Text>
-      </View>
+      <Home />
     </SafeAreaView>
   );
 }
