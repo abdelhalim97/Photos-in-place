@@ -11,7 +11,7 @@ import {SafeAreaView, StatusBar, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Config from 'react-native-config';
 import BootSplash from 'react-native-bootsplash';
-import {Home} from './src/components/screens';
+import {Home} from './src/screens/home-ecreen';
 
 function App(): React.JSX.Element {
   useEffect(() => {
@@ -23,7 +23,7 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={{flex: 1}}>
       <StatusBar
         barStyle={'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
