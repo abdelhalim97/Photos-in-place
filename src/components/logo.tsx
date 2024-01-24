@@ -1,23 +1,19 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import FastImage from 'react-native-fast-image';
-const imgTest = '../../assets/images/bootsplash.png';
+import React from 'react';
+import {Image, StyleSheet} from 'react-native';
 export const Logo = () => {
   return (
-    <FastImage
-      source={require(imgTest)}
-      style={styles.logo}
+    <Image
+      source={require('../../assets/images/splashicon.png')}
+      style={style.logo}
       resizeMode="contain"
     />
   );
 };
-const styles = StyleSheet.create({
-  cameraContainer: {
-    flex: 1,
-    width: '100%',
-  },
+const style = StyleSheet.create({
   logo: {
-    width: 200,
-    height: 200,
+    alignSelf: 'center',
+    width: 150,
+    height: 150,
+    marginTop: 50,
   },
 });
