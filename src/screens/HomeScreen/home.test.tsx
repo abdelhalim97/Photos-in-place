@@ -40,7 +40,7 @@ jest.mock('base64-arraybuffer', () => {
 ExifReader.load = jest.fn(() => Promise.resolve({}));
 
 describe('test home component', () => {
-  it.only('test camera button', async () => {
+  it('test camera button', async () => {
     render(<Home />);
 
     const button = screen.getByRole('button', {name: '📸'});
