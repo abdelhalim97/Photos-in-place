@@ -1,22 +1,14 @@
 import React, {useRef, useState} from 'react';
-import {Logo, CustomButton} from '../../components';
-import {
-  StyleSheet,
-  View,
-  Image,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Platform,
-} from 'react-native';
+import {Logo, CustomButton, MapMarker} from '../../components';
+import {StyleSheet, View, Image, ScrollView, Platform} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import MapboxGL, {Camera, Location} from '@rnmapbox/maps';
+import MapboxGL, {Camera, UserTrackingMode} from '@rnmapbox/maps';
 import RNFS from 'react-native-fs';
 import {decode} from 'base64-arraybuffer';
 import Config from 'react-native-config';
 //@ts-ignore
 import ExifReader from '../../../node_modules/exifreader/src/exif-reader.js';
 
-const markerIcon = require('../../../assets/images/icons8-location-96.png');
 MapboxGL.setAccessToken(Config.MAPBOX_BOX_KEY || null);
 
 const Home = () => {
@@ -30,60 +22,64 @@ const Home = () => {
   const [imageUrl, setImageUrl] = useState<string>();
   const [longitude, setLongitude] = useState<number>(0);
   const [latitude, setLatitude] = useState<number>(0);
+
   const isGeolocationAvailbale = latitude !== 0 && longitude !== 0;
+
   const handleCameraSelect = () => {
-    launchCamera({mediaType: 'mixed'}, handlePictureTaken);
+    //open the camera
+    launchCamera({mediaType: 'mixed', includeExtra: true}, handlePictureTaken);
   };
-  console.log(isGeolocationAvailbale);
+
   const handleGallerySelect = () => {
     // Open the gallery
-    launchImageLibrary({mediaType: 'mixed'}, handlePictureTaken);
-  };
-
-  //any?
-  const handlePictureTaken = async (response: any) => {
-    const imageURI = response.assets[0].uri;
-    setImageUrl(imageURI);
-    const b64Buffer = await RNFS.readFile(imageURI, 'base64');
-    const fileBuffer = decode(b64Buffer);
-    const tags = ExifReader.load(fileBuffer, {expanded: true});
-    console.log(tags);
-    console.log('___ THIS IS LATITUDE __');
-    console.log(tags.gps.Latitude);
-    console.log('___ THIS IS LONGITUDE ___');
-    console.log(tags.gps.Longitude);
-    if (tags.gps.Latitude) setLatitude(tags.gps.Latitude);
-    if (tags.gps.Longitude) setLongitude(tags.gps.Longitude);
-  };
-
-  const renderMapMarker = () => {
-    return (
-      <Image source={markerIcon} style={style.marker} resizeMode="cover" />
+    launchImageLibrary(
+      {mediaType: 'mixed', includeExtra: true},
+      handlePictureTaken,
     );
   };
 
+  const handlePictureTaken = async (response: any) => {
+    const imageURI = response.assets[0].uri;
+    setImageUrl(imageURI);
+    //extracting the exif data
+    const b64Buffer = await RNFS.readFile(imageURI, 'base64');
+    const fileBuffer = decode(b64Buffer);
+    const tags = await ExifReader.load(fileBuffer, {
+      expanded: true,
+      includeUnknown: true,
+    });
+
+    const currentLatitude = tags?.gps?.Latitude;
+    const currentLongitude = tags?.gps?.Longitude;
+
+    currentLatitude ? setLatitude(currentLatitude) : setLatitude(0);
+    currentLongitude ? setLongitude(currentLongitude) : setLongitude(0);
+  };
+
   return (
-    <ScrollView style={style.container} ref={scrollRef}>
+    <ScrollView style={style.scrollView} ref={scrollRef}>
       <Logo />
 
       {/* Selection Buttons */}
-      <View style={style.sourceSelector}>
+      <View style={style.buttonOptions}>
         <CustomButton content="📸" onPress={handleCameraSelect} />
         <CustomButton content="🎞" onPress={handleGallerySelect} />
       </View>
 
-      {/* <CameraVision /> & Image Placeholder */}
+      {/* the selected or phtographed image */}
       {imageUrl && (
         <Image
           source={{uri: imageUrl}}
-          style={style.imageContainer}
+          style={style.pickedImage}
           resizeMode="cover"
         />
       )}
 
       {/* The map goes here !*/}
-      <View style={style.mapContainer}>
+      <View style={style.mapParent}>
         <MapboxGL.MapView
+          zoomEnabled={true}
+          // this code to fix problem where the map navigation doesnt work anymore when the scrollView is scrollable
           onMoveShouldSetResponder={() => true}
           onStartShouldSetResponder={() => true}
           onResponderGrant={() => {
@@ -95,26 +91,27 @@ const Home = () => {
           onResponderStart={() => {
             handleScroll(false);
           }}
-          style={style.map}
-          // pointerEvents="none"
-          // scrollEnabled={false}
-          // pitchEnabled={false}
-          // rotateEnabled={false}
-        >
+          //
+          style={style.mapProvider}>
+          {/* if photo's geolacation isnt availbale we display user position otherwise we display the photo exif geolocatyion+ */}
           {isGeolocationAvailbale ? (
             <>
-              <Camera centerCoordinate={[longitude, latitude]} zoomLevel={5} />
-              <MapboxGL.MarkerView
-                coordinate={[longitude, latitude]}
-                isSelected>
-                {renderMapMarker()}
-              </MapboxGL.MarkerView>
+              <Camera centerCoordinate={[longitude, latitude]} zoomLevel={10} />
+              <MapMarker latitude={latitude} longitude={longitude} />
             </>
           ) : (
-            <MapboxGL.LocationPuck
-              visible={true}
-              puckBearingEnabled={true}
-              puckBearing="heading"></MapboxGL.LocationPuck>
+            <>
+              <Camera
+                zoomLevel={10}
+                followUserLocation={true}
+                followUserMode={UserTrackingMode.Follow}
+              />
+              <MapboxGL.LocationPuck
+                pulsing={'default'}
+                visible={true}
+                puckBearingEnabled={true}
+                puckBearing="heading"></MapboxGL.LocationPuck>
+            </>
           )}
         </MapboxGL.MapView>
       </View>
@@ -123,11 +120,11 @@ const Home = () => {
 };
 
 const style = StyleSheet.create({
-  container: {
+  scrollView: {
     flex: 1,
     backgroundColor: '#EEF5FF',
   },
-  mapContainer: {
+  mapParent: {
     width: '90%',
     marginVertical: 20,
     borderColor: '#8c9fdc',
@@ -136,18 +133,18 @@ const style = StyleSheet.create({
     alignSelf: 'center',
     overflow: 'hidden',
   },
-  map: {
+  mapProvider: {
     width: '100%',
     height: 300,
   },
-  sourceSelector: {
+  buttonOptions: {
     marginTop: 20,
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  imageContainer: {
+  pickedImage: {
     width: '90%',
     height: 300,
     marginTop: 20,
@@ -156,19 +153,6 @@ const style = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'center',
     overflow: 'hidden',
-  },
-  pin: {
-    width: 40,
-    height: 40,
-    backgroundColor: 'white',
-    borderRadius: 100,
-  },
-  text: {
-    color: 'black',
-  },
-  marker: {
-    width: 50,
-    height: 50,
   },
 });
 
