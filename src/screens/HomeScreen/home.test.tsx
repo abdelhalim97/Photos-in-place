@@ -19,7 +19,10 @@ jest.mock('react-native-image-picker', () => ({
     // Simulate the callback with a fake image data
     callback({assets: [{uri: 'fake-image-uri'}]}); //response.assets[0].uri
   }),
-  launchCamera: jest.fn(),
+  launchCamera: jest.fn((options, callback) => {
+    // Simulate the callback with a fake image data
+    callback({assets: [{uri: 'fake-image-uri'}]}); //response.assets[0].uri
+  }),
 }));
 
 jest.mock('react-native-fs', () => {
@@ -34,20 +37,35 @@ jest.mock('base64-arraybuffer', () => {
   };
 });
 
-ExifReader.load = jest.fn(() =>
-  Promise.resolve({
-    /* Mocked EXIF data */
-  }),
-);
+ExifReader.load = jest.fn(() => Promise.resolve({}));
 
 describe('test home component', () => {
-  it('test camera button', async () => {
+  it.only('test camera button', async () => {
     render(<Home />);
 
     const button = screen.getByRole('button', {name: '📸'});
     fireEvent.press(button);
 
     await waitFor(() => expect(launchCamera).toHaveBeenCalled());
+
+    const b64Buffer = await RNFS.readFile('fake-image', 'base64');
+
+    const fileBuffer = decode(b64Buffer);
+
+    await ExifReader.load(fakeBuffers, {
+      expanded: true,
+      includeUnknown: true,
+    });
+
+    await waitFor(() =>
+      expect(ExifReader.load).toHaveBeenCalledWith(fakeBuffers, {
+        expanded: true,
+        includeUnknown: true,
+      }),
+    );
+
+    const image = screen.getByTestId('selectedImage');
+    expect(image).toBeOnTheScreen();
   });
 
   it('test gallery button', async () => {
