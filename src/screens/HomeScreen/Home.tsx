@@ -25,13 +25,13 @@ const Home = () => {
 
   const isGeolocationAvailbale = latitude !== 0 && longitude !== 0;
 
+  //open the camera
   const handleCameraSelect = () => {
-    //open the camera
     launchCamera({mediaType: 'mixed', includeExtra: true}, handlePictureTaken);
   };
 
+  // Open the gallery
   const handleGallerySelect = () => {
-    // Open the gallery
     launchImageLibrary(
       {mediaType: 'mixed', includeExtra: true},
       handlePictureTaken,
