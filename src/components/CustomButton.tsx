@@ -4,7 +4,10 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 export const CustomButton = (props: any) => {
   const {content, onPress} = props;
   return (
-    <TouchableOpacity onPress={onPress} style={style.button}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={style.button}
+      accessibilityRole="button">
       <Text style={style.content}>{content}</Text>
     </TouchableOpacity>
   );
