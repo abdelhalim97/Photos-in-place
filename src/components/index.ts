@@ -1,2 +1,2 @@
-export {Logo} from './logo';
-export {Button} from './button';
+export {Logo} from './Logo';
+export {CustomButton} from './CustomButton';
