@@ -14,9 +14,8 @@ MapboxGL.setAccessToken(Config.MAPBOX_BOX_KEY || null);
 const Home = () => {
   const scrollRef = useRef<ScrollView>(null);
   const handleScroll = (scrollEnabled: boolean) => {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === 'android')
       scrollRef.current?.setNativeProps({scrollEnabled});
-    }
   };
 
   const [imageUrl, setImageUrl] = useState<string>();
@@ -25,13 +24,13 @@ const Home = () => {
 
   const isGeolocationAvailbale = latitude !== 0 && longitude !== 0;
 
+  //open the camera
   const handleCameraSelect = () => {
-    //open the camera
     launchCamera({mediaType: 'mixed', includeExtra: true}, handlePictureTaken);
   };
 
+  // Open the gallery
   const handleGallerySelect = () => {
-    // Open the gallery
     launchImageLibrary(
       {mediaType: 'mixed', includeExtra: true},
       handlePictureTaken,
@@ -72,12 +71,14 @@ const Home = () => {
           source={{uri: imageUrl}}
           style={style.pickedImage}
           resizeMode="cover"
+          testID="selectedImage"
         />
       )}
 
       {/* The map goes here !*/}
       <View style={style.mapParent}>
         <MapboxGL.MapView
+          testID="mapView"
           zoomEnabled={true}
           // this code to fix problem where the map navigation doesnt work anymore when the scrollView is scrollable
           onMoveShouldSetResponder={() => true}
