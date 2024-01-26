@@ -10,11 +10,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "@rnmapbox/maps": "^10.1.8",
+    "base64-arraybuffer": "^1.0.2",
+    "exifreader": "^4.20.0",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-bootsplash": "^5.2.2",
     "react-native-config": "^1.5.1",
-    "react-native-image-picker": "^7.1.0"
+    "react-native-fs": "^2.20.0",
+    "react-native-image-picker": "^7.1.0",
+    "react-native-maps": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

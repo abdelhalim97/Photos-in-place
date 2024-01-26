@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-const imgTest = '../../assets/images/splashicon.png';
-export const Button = (props: any) => {
+
+export const CustomButton = (props: any) => {
   const {content, onPress} = props;
   return (
     <TouchableOpacity onPress={onPress} style={style.button}>
