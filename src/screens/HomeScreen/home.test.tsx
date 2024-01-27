@@ -13,6 +13,20 @@ import {decode} from 'base64-arraybuffer';
 import ExifReader from '../../../node_modules/exifreader/src/exif-reader.js';
 const fakeBuffers = [0x4d, 0x5a, 0x90, 0x00, 0x03, 0x00];
 
+jest.mock(
+  'react-native//Libraries/PermissionsAndroid/PermissionsAndroid',
+  () => {
+    const PermissionsAndroid = jest.requireActual(
+      'react-native//Libraries/PermissionsAndroid/PermissionsAndroid',
+    );
+    return {
+      ...PermissionsAndroid,
+      check: jest.fn(() => new Promise(resolve => resolve('granted'))),
+      request: jest.fn(() => new Promise(resolve => resolve(true))),
+    };
+  },
+);
+
 //mocking multiple packages
 jest.mock('react-native-image-picker', () => ({
   launchImageLibrary: jest.fn((options, callback) => {
