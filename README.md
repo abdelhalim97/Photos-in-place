@@ -4,7 +4,6 @@
 
 <img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6" width="400" height="1000">
 
-
 ## II: How does the application work based on different scenarios 
 if u dont select a photo a map will be shown with the current user position. <br />
 if u take/select a photo will be dispalyed in the screen and the position where that photo were taken will be displayed on the map with a marker. <br />
@@ -35,8 +34,7 @@ React-Native version: latest
 
 [<img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c" width="50%">](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
 
-
-## : TESTING+
+## V: TESTING
 Using jest to unit test the application components and functions including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF
 
 ![image](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/08f45d32-fcfd-4e3b-a4d2-e498b8fcd4fe)
