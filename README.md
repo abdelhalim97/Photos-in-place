@@ -18,6 +18,7 @@ if the application fails to pull exif geolocation to whatever reason, the device
 ### 4)Even with everything is done perfectly it looks like the react native packages fails to pull exif geolocation from the gallery or on 13<=Android version<11 but it works well with photo taken by the camera.
 
 ## IV: Environment
+
 |                     | photo taken from the app  | photo selected through gallery
 | -------------       | -------------             |
 | Android version 13  | :heavy_check_mark:        | :x:
