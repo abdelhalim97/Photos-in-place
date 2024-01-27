@@ -6,15 +6,15 @@
 
 
 ## II: How does it work
-if u dont select a photo a map will be shown with the current user position ////////to recheck
-if u take/select a photo will be dispalyed in the screen and the position where that photo were taken will be displayed on the map with a marker
-if the application fails to pull exif geolocation to whatever reason, the device curent position will be shown as a safety fall back
+if u dont select a photo a map will be shown with the current user position.
+if u take/select a photo will be dispalyed in the screen and the position where that photo were taken will be displayed on the map with a marker.
+if the application fails to pull exif geolocation to whatever reason, the device curent position will be shown as a safety fall back.
 
 ## III: why would the exif geolocation fail to be pulled?
 
 ### 1) The application is tested only on the android device
 ### 2) Kindly make sure to activate your gps
-### 3) If you have Samsung phone or any other smarthpone that require certain configuration from user side like the location tags below in my samsung Note, found in the camera settings (we are not talking about permissions)
+### 3) If you have Samsung phone or any other smarthpone that require certain configuration from user side like the location tags below in my samsung Note, found in the camera settings (we are not talking about permissions), please make sure to activate it. 
 
 
 ![Screenshot_20240127_144253_Camera](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820)
