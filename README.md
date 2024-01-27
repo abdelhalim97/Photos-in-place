@@ -19,10 +19,14 @@ if the application fails to pull exif geolocation to whatever reason, the device
 
 ## IV: Environment
 
-|                     | photo taken from the app  | photo selected through gallery
-| -------------       | -------------             |
+| ------------------- | photo taken from the app  | photo selected through gallery
+
+| ------------------- | --------------------------|
+
 | Android version 13  | :heavy_check_mark:        | :x:
+
 | Android version 11  | :heavy_check_mark:        | :heavy_check_mark:
+
 ![Screenshot_20240127_144253_Camera](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820)
 
 
