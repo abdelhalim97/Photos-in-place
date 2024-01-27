@@ -5,7 +5,7 @@
 <img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6" width="400" height="1000">
 
 
-## II: How does it work
+## II: How does the application work based on different scenarios 
 if u dont select a photo a map will be shown with the current user position. <br />
 if u take/select a photo will be dispalyed in the screen and the position where that photo were taken will be displayed on the map with a marker. <br />
 if the application fails to pull exif geolocation to whatever reason, the device curent position will be shown as a safety fall back.
