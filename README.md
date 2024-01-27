@@ -30,7 +30,7 @@ if the application fails to pull exif geolocation to whatever reason, the device
 
 
 ## : TESTING+
-including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF
+Using jest to unit test the application components and functions including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF
 
 ![image](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/08f45d32-fcfd-4e3b-a4d2-e498b8fcd4fe)
 
