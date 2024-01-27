@@ -1,6 +1,13 @@
 import React, {useRef, useState} from 'react';
 import {Logo, CustomButton, MapMarker} from '../../components';
-import {StyleSheet, View, Image, ScrollView, Platform} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Image,
+  ScrollView,
+  Platform,
+  PermissionsAndroid,
+} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import MapboxGL, {Camera, UserTrackingMode} from '@rnmapbox/maps';
 import RNFS from 'react-native-fs';
@@ -8,6 +15,7 @@ import {decode} from 'base64-arraybuffer';
 import Config from 'react-native-config';
 //@ts-ignore
 import ExifReader from '../../../node_modules/exifreader/src/exif-reader.js';
+import {requestPermission} from '../../permissions/request-permission';
 
 MapboxGL.setAccessToken(Config.MAPBOX_BOX_KEY || null);
 
@@ -26,33 +34,41 @@ const Home = () => {
 
   //open the camera
   const handleCameraSelect = () => {
-    launchCamera({mediaType: 'mixed', includeExtra: true}, handlePictureTaken);
+    requestPermission(PermissionsAndroid.PERMISSIONS.CAMERA, 'camera');
+
+    launchCamera({mediaType: 'photo', includeExtra: true}, handlePictureTaken);
   };
 
   // Open the gallery
   const handleGallerySelect = () => {
     launchImageLibrary(
-      {mediaType: 'mixed', includeExtra: true},
+      {mediaType: 'photo', includeExtra: true},
       handlePictureTaken,
     );
   };
 
   const handlePictureTaken = async (response: any) => {
-    const imageURI = response.assets[0].uri;
+    const imageURI = response?.assets[0]?.uri;
     setImageUrl(imageURI);
-    //extracting the exif data
-    const b64Buffer = await RNFS.readFile(imageURI, 'base64');
-    const fileBuffer = decode(b64Buffer);
-    const tags = await ExifReader.load(fileBuffer, {
-      expanded: true,
-      includeUnknown: true,
-    });
+    if (imageURI) {
+      //extracting the exif data
+      const b64Buffer = await RNFS.readFile(imageURI, 'base64');
+      const fileBuffer = decode(b64Buffer);
+      const tags = await ExifReader.load(fileBuffer, {
+        expanded: true,
+        includeUnknown: true,
+      });
 
-    const currentLatitude = tags?.gps?.Latitude;
-    const currentLongitude = tags?.gps?.Longitude;
+      //updating the geolocation
+      const currentLatitude = tags?.gps?.Latitude;
+      const currentLongitude = tags?.gps?.Longitude;
 
-    currentLatitude ? setLatitude(currentLatitude) : setLatitude(0);
-    currentLongitude ? setLongitude(currentLongitude) : setLongitude(0);
+      currentLatitude ? setLatitude(currentLatitude) : setLatitude(0);
+      currentLatitude ? setLongitude(currentLongitude) : setLongitude(0);
+    } else {
+      setLatitude(0);
+      setLongitude(0);
+    }
   };
 
   return (
