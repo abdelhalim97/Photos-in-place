@@ -2,7 +2,7 @@
 
 ## I: User interface
 
-![Screenshot_20240127_143704_PhotosInPlace](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6 =250x250)
+![Screenshot_20240127_143704_PhotosInPlace](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6|width=100)
 
 
 ## II: How does it work
