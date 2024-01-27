@@ -14,7 +14,7 @@ if the application fails to pull exif geolocation to whatever reason, the device
 
 ### 1) The application is tested only in an android OS.
 ### 2) Kindly make sure to activate your gps.
-### 3) The image has no geolocation metadata for many reasons like If you have Samsung phone or any other smarthpone that require certain configuration from user side like the location tags below in my samsung Note, found in the camera settings (we are not talking about permissions), please make sure to activate it. 
+### 3) The image has no geolocation metadata,this can happen for many reasons.For example If you have Samsung phone or any other smarthpone that require certain camera/gallery configuration from user side like the location tags below in my samsung Note 20 camera,found in the camera settings (we are not talking about permissions), please make sure to activate it. 
 
 <img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820" width="400" height="1000">
 
