@@ -2,7 +2,7 @@
 
 ## I: User interface
 
-![Screenshot_20240127_143704_PhotosInPlace](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6)
+![Screenshot_20240127_143704_PhotosInPlace](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/ae84ba2f-c928-4452-ad76-b81ffe0d5ef6 =250x250)
 
 
 ## II: How does it work
@@ -15,6 +15,8 @@ if the application fails to pull exif geolocation to whatever reason, the device
 ### 1) The application is tested only on the android device
 ### 2) Kindly make sure to activate your gps
 ### 3) If you have Samsung phone or any other smarthpone that require certain configuration from user side like the location tags below in my samsung Note, found in the camera settings (we are not talking about permissions), please make sure to activate it. 
+![Screenshot_20240127_144253_Camera](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820 =250x250)
+
 ### 4)Even with everything is done perfectly it looks like the react native packages fails to pull exif geolocation from the gallery or on 13<=Android version<11 but it works well with photo taken by the camera.
 
 ## IV: Environment
@@ -24,7 +26,6 @@ if the application fails to pull exif geolocation to whatever reason, the device
 | Android version 13  | :heavy_check_mark:        | :x:|
 | Android version 11  | :heavy_check_mark:        | :heavy_check_mark:|
 
-![Screenshot_20240127_144253_Camera](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820)
 
 
 ## : TESTING+
