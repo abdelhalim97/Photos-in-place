@@ -24,13 +24,14 @@ if the application fails to pull exif geolocation to whatever reason, the device
 ## IV: Environment
 React-Native version: latest
 
+### Table representing when the geolocation metadata are being pulled depending on the testing environment
+
 | ------------------- | photo taken from the app  | photo selected through gallery| photo selected through google photos|
 | ------------------- | --------------------------|-------------------------------|-------------------------------|
 | Android version 13  | :heavy_check_mark:        | :x:| :question:|
 | Android version 11  | :heavy_check_mark:        | :question:|:heavy_check_mark:|
 
-[![Watch the video](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/3125e974-881d-4dc5-83e9-5daa45acbb99)](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
-
+[![Watch the video](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c)](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
 
 ## : TESTING+
 Using jest to unit test the application components and functions including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF
