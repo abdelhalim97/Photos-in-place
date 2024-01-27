@@ -18,16 +18,18 @@ if the application fails to pull exif geolocation to whatever reason, the device
 
 <img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/1a0613bc-4e82-4146-9f6c-9d40775d9820" width="400" height="1000">
 
-### 4)Even with everything is done perfectly it looks like the react native packages fails to pull exif geolocation from the gallery or on 13<=Android version<11 but it works well with photo taken by the camera.
+### 4)Even with everything is done perfectly it looks like the react native packages fails to pull exif geolocation from the gallery application(not google photos) or on 13<=Android version<11 but it works well with photo taken by the camera.
+### personaly i think the problem with samsung gallery and not android version
 
 ## IV: Environment
 React-Native version: latest
 
-| ------------------- | photo taken from the app  | photo selected through gallery|
-| ------------------- | --------------------------|-------------------------------|
-| Android version 13  | :heavy_check_mark:        | :x:|
-| Android version 11  | :heavy_check_mark:        | :heavy_check_mark:|
+| ------------------- | photo taken from the app  | photo selected through gallery| photo selected through google photos|
+| ------------------- | --------------------------|-------------------------------|-------------------------------|
+| Android version 13  | :heavy_check_mark:        | :x:| :question:|
+| Android version 11  | :heavy_check_mark:        | :question:|:heavy_check_mark:|
 
+[![Watch the video](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/3125e974-881d-4dc5-83e9-5daa45acbb99)](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
 
 
 ## : TESTING+
