@@ -30,7 +30,8 @@ React-Native version: latest
 | ------------------- | --------------------------|-------------------------------|-------------------------------|
 | Android version 13  | :heavy_check_mark:        | :x:| :question:|
 | Android version 11  | :heavy_check_mark:        | :question:|:heavy_check_mark:|
-<video src='https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun' width=180/>
+
+[<img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c" width="50%">](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun "Now in Android: 55")
 
 [![Watch the video](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c)](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
 
