@@ -26,7 +26,7 @@ const Home = () => {
       scrollRef.current?.setNativeProps({scrollEnabled});
   };
 
-  const [imageUrl, setImageUrl] = useState<string>();
+  const [imageUrl, setImageUrl] = useState<string>('');
   const [longitude, setLongitude] = useState<number>(0);
   const [latitude, setLatitude] = useState<number>(0);
 
@@ -92,46 +92,51 @@ const Home = () => {
       )}
 
       {/* The map goes here !*/}
-      <View style={style.mapParent}>
-        <MapboxGL.MapView
-          testID="mapView"
-          zoomEnabled={true}
-          // this code to fix problem where the map navigation doesnt work anymore when the scrollView is scrollable
-          onMoveShouldSetResponder={() => true}
-          onStartShouldSetResponder={() => true}
-          onResponderGrant={() => {
-            handleScroll(false);
-          }}
-          onResponderEnd={() => {
-            handleScroll(true);
-          }}
-          onResponderStart={() => {
-            handleScroll(false);
-          }}
-          //
-          style={style.mapProvider}>
-          {/* if photo's geolacation isnt availbale we display user position otherwise we display the photo exif geolocatyion+ */}
-          {isGeolocationAvailbale ? (
-            <>
-              <Camera centerCoordinate={[longitude, latitude]} zoomLevel={10} />
-              <MapMarker latitude={latitude} longitude={longitude} />
-            </>
-          ) : (
-            <>
-              <Camera
-                zoomLevel={10}
-                followUserLocation={true}
-                followUserMode={UserTrackingMode.Follow}
-              />
-              <MapboxGL.LocationPuck
-                pulsing={'default'}
-                visible={true}
-                puckBearingEnabled={true}
-                puckBearing="heading"></MapboxGL.LocationPuck>
-            </>
-          )}
-        </MapboxGL.MapView>
-      </View>
+      {imageUrl && (
+        <View style={style.mapParent}>
+          <MapboxGL.MapView
+            testID="mapView"
+            zoomEnabled={true}
+            // this code to fix problem where the map navigation doesnt work anymore when the scrollView is scrollable
+            onMoveShouldSetResponder={() => true}
+            onStartShouldSetResponder={() => true}
+            onResponderGrant={() => {
+              handleScroll(false);
+            }}
+            onResponderEnd={() => {
+              handleScroll(true);
+            }}
+            onResponderStart={() => {
+              handleScroll(false);
+            }}
+            //
+            style={style.mapProvider}>
+            {/* if photo's geolacation isnt availbale we display user position otherwise we display the photo exif geolocatyion+ */}
+            {isGeolocationAvailbale ? (
+              <>
+                <Camera
+                  centerCoordinate={[longitude, latitude]}
+                  zoomLevel={10}
+                />
+                <MapMarker latitude={latitude} longitude={longitude} />
+              </>
+            ) : (
+              <>
+                <Camera
+                  zoomLevel={10}
+                  followUserLocation={true}
+                  followUserMode={UserTrackingMode.Follow}
+                />
+                <MapboxGL.LocationPuck
+                  pulsing={'default'}
+                  visible={true}
+                  puckBearingEnabled={true}
+                  puckBearing="heading"></MapboxGL.LocationPuck>
+              </>
+            )}
+          </MapboxGL.MapView>
+        </View>
+      )}
     </ScrollView>
   );
 };
