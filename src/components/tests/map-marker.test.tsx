@@ -1,4 +1,4 @@
-import {MapMarker} from '.';
+import {MapMarker} from '..';
 import {render} from '@testing-library/react-native';
 
 describe('test map marker component', () => {
