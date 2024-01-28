@@ -29,7 +29,7 @@ React-Native version: latest
 
 ### Click on the image below to redirect to 15 seconds video demonstration with image picker on android 11.
 
-[<img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c" width="50%">](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
+[<img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/129fceec-43c1-4b5d-987f-f63e872acad4" width="50%">](https://youtu.be/hG-x5iO3Bz8)
 
 ## V) TESTING
 Using jest to unit test the application components and functions including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF.
