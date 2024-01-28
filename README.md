@@ -38,4 +38,4 @@ Using jest to unit test the application components and functions including mocki
 
 ## VI) APK link
 
-[APK link](https://www.file.io/)
+[APK link](https://file.io/4kHd4tKu1alk)
