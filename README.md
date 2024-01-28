@@ -34,4 +34,5 @@ React-Native version: latest
 
 ## V) TESTING
 Using jest to unit test the application components and functions including mocking many libraries like react-native-config,react-native-image-picker and the libraries responsable of extracting the EXIF
+
 ![image](https://github.com/abdelhalim97/Photos-in-place/assets/47896397/b4922991-04ab-4561-a526-7b984b32dbf5)
