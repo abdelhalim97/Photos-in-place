@@ -27,7 +27,7 @@ React-Native version: latest
 | Android version 13  | :heavy_check_mark:        | :x:|
 | Android version 11  | :heavy_check_mark:        | :heavy_check_mark:|
 
-### Click on the image below to redirect to 15 seconds video demonstration with google photos as image picker and android 11.
+### Click on the image below to redirect to 15 seconds video demonstration with image picker on android 11.
 
 [<img src="https://github.com/abdelhalim97/Photos-in-place/assets/47896397/51b8ea8d-2690-4757-a0db-2d8a8518e56c" width="50%">](https://www.youtube.com/watch?v=cC2uVT_AFqA&ab_channel=Abdelhalimbenoun)
 
